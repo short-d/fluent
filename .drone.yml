@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-    -   name: run frontend tests
+    -   name: run tests
         image: docker
         commands:
             - docker build -t test -f Dockerfile-test .
