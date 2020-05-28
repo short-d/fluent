@@ -1,1 +1,1 @@
-export { Fluent } from './components/Fluent'
+export { Fluent } from './components/Fluent';
