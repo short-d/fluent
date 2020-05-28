@@ -1,0 +1,17 @@
+FROM node:12.11.1-alpine
+
+WORKDIR /web
+
+# Install tools
+RUN apk add --no-cache git
+RUN apk add --no-cache bash
+
+# Install dependencies
+COPY package.json yarn.lock ./
+RUN yarn
+
+COPY . .
+
+ENV CI=true
+
+CMD ["yarn", "test:unit", "--passWithNoTests"]
