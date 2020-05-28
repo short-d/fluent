@@ -5,7 +5,7 @@ steps:
     -   name: run frontend tests
         image: docker
         commands:
-            - docker build -t test -f Dockerfile-test
+            - docker build -t test -f Dockerfile-test .
             - docker run test
         volumes:
             -   name: docker
