@@ -2,19 +2,19 @@ kind: pipeline
 name: default
 
 steps:
-    -   name: run tests
-        image: docker
-        commands:
-            - docker build -t test -f Dockerfile-test .
-            - docker run test
-        volumes:
-            -   name: docker
-                path: /var/run/docker.sock
-        when:
-            branch:
-                - master
-            event:
-                - pull_request
+    - name: run tests
+      image: docker
+      commands:
+          - docker build -t test -f Dockerfile-test .
+          - docker run test
+      volumes:
+          - name: docker
+            path: /var/run/docker.sock
+      when:
+        branch:
+            - master
+        event:
+            - pull_request
 volumes:
     - name: docker
       host:
