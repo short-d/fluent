@@ -156,7 +156,10 @@ describe('InsertTextAction', () => {
     for (const testCase of testCases) {
         it(testCase.name, () => {
             const action = new InsertTextAction(testCase.text);
-            const newState = action.perform(testCase.currState);
+            const state = Object.assign({}, testCase.currState);
+            const newState = action.perform(state);
+
+            expect(state).toEqual(testCase.currState);
             expect(newState).toStrictEqual(testCase.expectedNewState);
         });
     }
