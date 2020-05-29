@@ -48,13 +48,11 @@
         $heart-size: 10px;
         display: inline-block;
         width: $heart-size;
-
         height: $heart-size;
-
         margin: 0 10px;
-
         transform: rotate(-45deg);
         background-color: red;
+
         &:before,
         &:after {
             position: absolute;
@@ -64,6 +62,7 @@
             border-radius: 50%;
             background-color: red;
         }
+
         &:before {
             top: -($heart-size / 2);
             left: 0;
