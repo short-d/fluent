@@ -1,6 +1,7 @@
 import { IEditorState } from './editor.state';
 import { SegmentType } from '../entities/segment';
 import { InsertTextAction } from './insert-text.action';
+import { deepCopy } from '../common/object';
 
 describe('InsertTextAction', () => {
     interface ITestCase {
@@ -21,22 +22,22 @@ describe('InsertTextAction', () => {
                         id: '0',
                         type: SegmentType.Text,
                         styles: [],
-                        content: 'abd'.split('')
+                        content: 'abd'.split(''),
                     },
                     {
                         idx: 1,
                         id: '1',
                         type: SegmentType.Text,
                         styles: [],
-                        content: 'hello'.split('')
-                    }
+                        content: 'hello'.split(''),
+                    },
                 ],
                 cursor: {
                     startSegmentID: '0',
                     startOffset: 2,
                     endSegmentID: '0',
-                    endOffset: 2
-                }
+                    endOffset: 2,
+                },
             },
             text: 'c',
             expectedNewState: {
@@ -47,23 +48,23 @@ describe('InsertTextAction', () => {
                         id: '0',
                         type: SegmentType.Text,
                         styles: [],
-                        content: 'abcd'.split('')
+                        content: 'abcd'.split(''),
                     },
                     {
                         idx: 1,
                         id: '1',
                         type: SegmentType.Text,
                         styles: [],
-                        content: 'hello'.split('')
-                    }
+                        content: 'hello'.split(''),
+                    },
                 ],
                 cursor: {
                     startSegmentID: '0',
                     startOffset: 3,
                     endSegmentID: '0',
-                    endOffset: 3
-                }
-            }
+                    endOffset: 3,
+                },
+            },
         },
         {
             name: 'should add multiple characters at cursor position',
@@ -75,22 +76,22 @@ describe('InsertTextAction', () => {
                         id: '0',
                         type: SegmentType.Text,
                         styles: [],
-                        content: 'abd'.split('')
+                        content: 'abd'.split(''),
                     },
                     {
                         idx: 1,
                         id: '1',
                         type: SegmentType.Text,
                         styles: [],
-                        content: 'hello'.split('')
-                    }
+                        content: 'hello'.split(''),
+                    },
                 ],
                 cursor: {
                     startSegmentID: '1',
                     startOffset: 5,
                     endSegmentID: '1',
-                    endOffset: 5
-                }
+                    endOffset: 5,
+                },
             },
             text: 'world',
             expectedNewState: {
@@ -101,23 +102,23 @@ describe('InsertTextAction', () => {
                         id: '0',
                         type: SegmentType.Text,
                         styles: [],
-                        content: 'abd'.split('')
+                        content: 'abd'.split(''),
                     },
                     {
                         idx: 1,
                         id: '1',
                         type: SegmentType.Text,
                         styles: [],
-                        content: 'helloworld'.split('')
-                    }
+                        content: 'helloworld'.split(''),
+                    },
                 ],
                 cursor: {
                     startSegmentID: '1',
                     startOffset: 10,
                     endSegmentID: '1',
-                    endOffset: 10
-                }
-            }
+                    endOffset: 10,
+                },
+            },
         },
         {
             name: 'should create the first segment if no one exists',
@@ -128,8 +129,8 @@ describe('InsertTextAction', () => {
                     startSegmentID: '',
                     startOffset: -1,
                     endSegmentID: '',
-                    endOffset: -1
-                }
+                    endOffset: -1,
+                },
             },
             text: 'world',
             expectedNewState: {
@@ -140,23 +141,23 @@ describe('InsertTextAction', () => {
                         id: '0',
                         type: SegmentType.Text,
                         styles: [],
-                        content: 'world'.split('')
-                    }
+                        content: 'world'.split(''),
+                    },
                 ],
                 cursor: {
                     startSegmentID: '0',
                     startOffset: 5,
                     endSegmentID: '0',
-                    endOffset: 5
-                }
-            }
-        }
+                    endOffset: 5,
+                },
+            },
+        },
     ];
 
     for (const testCase of testCases) {
         it(testCase.name, () => {
             const action = new InsertTextAction(testCase.text);
-            const state = Object.assign({}, testCase.currState);
+            const state = deepCopy(testCase.currState);
             const newState = action.perform(state);
 
             expect(state).toEqual(testCase.currState);
