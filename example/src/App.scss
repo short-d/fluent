@@ -1,0 +1,72 @@
+.App {
+    .main-content {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        height: 400px;
+        width: 100%;
+        display: flex;
+    }
+
+    .center {
+        width: 1000px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    header {
+        font-size: 30px;
+        padding: 10px 40px;
+        color: white;
+        background-color: #DD4913;
+
+        .logo {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    }
+
+    footer {
+        font-weight: 500;
+        padding-top: 20px;
+        text-align: center;
+        color: #606060;
+        border-top: 1px solid #eee;
+
+        a {
+            font-weight: bold;
+            text-decoration: none;
+            color: inherit;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    i.heart {
+        position: relative;
+        $heart-size: 10px;
+        display: inline-block;
+        width: $heart-size;
+
+        height: $heart-size;
+
+        margin: 0 10px;
+
+        transform: rotate(-45deg);
+        background-color: red;
+        &:before,
+        &:after {
+            position: absolute;
+            width: $heart-size;
+            height: $heart-size;
+            content: "";
+            border-radius: 50%;
+            background-color: red;
+        }
+        &:before {
+            top: -($heart-size / 2);
+            left: 0;
+        }
+    }
+}
