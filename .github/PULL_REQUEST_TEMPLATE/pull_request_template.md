@@ -4,6 +4,3 @@ Please read [The Change Author’s Guide](https://google.github.io/eng-practices
 
 ## Description
 
-## Motivation and Context
-
-## How Has This Been Tested?
