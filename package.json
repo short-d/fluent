@@ -24,7 +24,11 @@
         "deploy": "gh-pages -d example/build",
         "format": "yarn prettier:write",
         "prettier:base": "prettier --parser typescript --single-quote",
-        "prettier:write": "yarn prettier:base --write \"src/**/*.{ts,tsx}\""
+        "prettier:write": "yarn prettier:base --write \"src/**/*.{ts,tsx}\"",
+        "prettier:check": "yarn prettier:base --list-different \"src/**/*.{ts,tsx}\"",
+        "tslint:lint": "yarn tslint -c tslint.json 'src/**/*.ts'",
+        "stylelint:lint": "yarn stylelint --config=.stylelintrc src/**/*.{scss,css}",
+        "stylelint:write": "yarn stylelint --config=.stylelintrc --fix src/**/*.{scss,css}"
     },
     "peerDependencies": {
         "react": "^16.0.0"
@@ -53,7 +57,16 @@
         "prettier": "^2.0.4",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-scripts": "^3.4.1"
+        "react-scripts": "^3.4.1",
+        "stylelint": "^13.6.1",
+        "stylelint-config-prettier": "^6.0.0",
+        "stylelint-config-standard": "^19.0.0",
+        "stylelint-prettier": "^1.1.2",
+        "stylelint-scss": "^3.18.0",
+        "tslint": "^5.20.1",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-plugin-prettier": "^2.3.0",
+        "typescript": "^3.6.4"
     },
     "files": [
         "dist"
