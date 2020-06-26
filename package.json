@@ -69,8 +69,5 @@
     },
     "files": [
         "dist"
-    ],
-    "dependencies": {
-        "fluent": "^0.13.0"
-    }
+    ]
 }
