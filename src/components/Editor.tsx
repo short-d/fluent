@@ -1,6 +1,6 @@
-import React, {ClipboardEvent, Component, createRef, KeyboardEvent} from 'react';
+import React, {Component, createRef, KeyboardEvent} from 'react';
 
-import {ARROW_LEFT, ARROW_RIGHT, BACKSPACE, META} from '../key';
+import {ARROW_LEFT, ARROW_RIGHT, BACKSPACE, META, ARROW_UP, ARROW_DOWN} from '../key';
 import {ISegment, SegmentType} from '../entities/segment';
 import {IEditorStateService, Subscriber} from '../services/editor-state.service';
 import {InsertTextAction} from '../state/insert-text.action';
@@ -37,7 +37,6 @@ export default class Editor extends Component<any, IEditorState> {
                      suppressContentEditableWarning={true}
                      onKeyDown={this.handleOnKeyDown}
                      onKeyUp={this.handleOnKeyUp}
-                     onPaste={this.handleOnPaste}
                 >
                     {this.renderSegments()}
                 </div>
@@ -73,6 +72,12 @@ export default class Editor extends Component<any, IEditorState> {
             case ARROW_RIGHT:
                 event.preventDefault();
                 return;
+            case ARROW_UP:
+                event.preventDefault();
+                return;
+            case ARROW_DOWN:
+                event.preventDefault();
+                return;
             case META:
                 event.preventDefault();
                 this.isHoldingMetaKey = true;
@@ -87,15 +92,6 @@ export default class Editor extends Component<any, IEditorState> {
                 }
                 this.insertText(event.key);
         }
-    };
-
-    private handleOnPaste = (event: ClipboardEvent<HTMLDivElement>) => {
-        event.preventDefault();
-        const text = event.clipboardData.getData('Text');
-        if (text.length < 1) {
-            return;
-        }
-        this.insertText(text);
     };
 
     private insertText(text: string) {
