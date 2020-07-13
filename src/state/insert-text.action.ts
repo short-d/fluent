@@ -21,16 +21,15 @@ export class InsertTextAction implements Action {
             newSegments = [
                 {
                     idx: 0,
-                    id: '0',
                     type: SegmentType.Text,
                     styles: [],
                     content: []
                 }
             ];
             newCursor = {
-                startSegmentID: '0',
+                startSegmentIdx: 0,
                 startOffset: 0,
-                endSegmentID: '0',
+                endSegmentIdx: 0,
                 endOffset: 0
             };
             newState = Object.assign<any, IEditorState, Partial<IEditorState>>(
