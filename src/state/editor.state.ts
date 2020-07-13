@@ -13,5 +13,5 @@ export function getCurrSegment(state: IEditorState): ISegment {
 }
 
 export function findSegment(segmentIdx: number, segments: ISegment[]): ISegment {
-    return segments.filter((segment: ISegment) => segment.idx === segmentIdx)[0];
+    return segments[segmentIdx];
 }
