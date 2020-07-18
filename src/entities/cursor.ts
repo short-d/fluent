@@ -1,6 +1,6 @@
 export interface ICursor {
-    startSegmentID: string;
+    startSegmentIdx: number;
     startOffset: number;
-    endSegmentID: string;
+    endSegmentIdx: number;
     endOffset: number;
 }
