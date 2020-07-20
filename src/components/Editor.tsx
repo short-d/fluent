@@ -8,16 +8,13 @@ import {IEditorState} from '../state/editor.state';
 
 
 export default class Editor extends Component<any, IEditorState> {
-    private editorStateService = new IEditorStateService();
-
+    private editorStateService: IEditorStateService;
     private readonly stateChangeSubscriber: Subscriber;
-
     private editableRegion = createRef<HTMLDivElement>();
-
-    private isHoldingMetaKey = false;
 
     constructor(props: any) {
         super(props);
+        this.editorStateService = props.stateService;
         this.state = this.editorStateService.getState();
 
         this.stateChangeSubscriber = () => this.setState(this.editorStateService.getState());
@@ -36,7 +33,6 @@ export default class Editor extends Component<any, IEditorState> {
                      contentEditable
                      suppressContentEditableWarning={true}
                      onKeyDown={this.handleOnKeyDown}
-                     onKeyUp={this.handleOnKeyUp}
                 >
                     {this.renderSegments()}
                 </div>
@@ -65,27 +61,29 @@ export default class Editor extends Component<any, IEditorState> {
         switch (event.key) {
             case BACKSPACE:
                 event.preventDefault();
+                //TODO: Please work on BACKSPACE event
                 return;
             case ARROW_LEFT:
                 event.preventDefault();
+                //TODO: Please work on ARROW_LEFT event
                 return;
             case ARROW_RIGHT:
                 event.preventDefault();
+                //TODO: Please work on ARROW_RIGHT event
                 return;
             case ARROW_UP:
                 event.preventDefault();
+                //TODO: Please work on ARROW_UP event
                 return;
             case ARROW_DOWN:
                 event.preventDefault();
+                //TODO: Please work on ARROW_DOWN event
                 return;
             case META:
                 event.preventDefault();
-                this.isHoldingMetaKey = true;
+                //TODO: Please work on META event
                 return;
             default:
-                if (this.isHoldingMetaKey) {
-                    return;
-                }
                 event.preventDefault();
                 if (event.key.length > 1) {
                     return;
@@ -98,10 +96,4 @@ export default class Editor extends Component<any, IEditorState> {
         const action = new InsertTextAction(text);
         this.editorStateService.performAction(action);
     }
-
-    private handleOnKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
-        if (event.key === META) {
-            this.isHoldingMetaKey = false;
-        }
-    };
 }
