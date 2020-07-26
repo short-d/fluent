@@ -1,3 +1,3 @@
-export function insert<T>(arr: T[], idx: number, slice: T[]): T[] {
-    return [...arr.slice(0, idx), ...slice, ...arr.slice(idx)];
+export function insert<T>(arr: T[], index: number, slice: T[]): T[] {
+    return [...arr.slice(0, index), ...slice, ...arr.slice(index)];
 }

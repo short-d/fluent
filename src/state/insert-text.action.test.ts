@@ -18,22 +18,22 @@ describe('InsertTextAction', () => {
                 options: [],
                 segments: [
                     {
-                        idx: 0,
+                        index: 0,
                         type: SegmentType.Text,
                         styles: [],
                         content: 'abd'.split('')
                     },
                     {
-                        idx: 1,
+                        index: 1,
                         type: SegmentType.Text,
                         styles: [],
                         content: 'hello'.split('')
                     }
                 ],
                 cursor: {
-                    startSegmentIdx: 0,
+                    startSegmentIndex: 0,
                     startOffset: 2,
-                    endSegmentIdx: 0,
+                    endSegmentIndex: 0,
                     endOffset: 2
                 }
             },
@@ -42,22 +42,22 @@ describe('InsertTextAction', () => {
                 options: [],
                 segments: [
                     {
-                        idx: 0,
+                        index: 0,
                         type: SegmentType.Text,
                         styles: [],
                         content: 'abcd'.split('')
                     },
                     {
-                        idx: 1,
+                        index: 1,
                         type: SegmentType.Text,
                         styles: [],
                         content: 'hello'.split('')
                     }
                 ],
                 cursor: {
-                    startSegmentIdx: 0,
+                    startSegmentIndex: 0,
                     startOffset: 3,
-                    endSegmentIdx: 0,
+                    endSegmentIndex: 0,
                     endOffset: 3
                 }
             }
@@ -68,22 +68,22 @@ describe('InsertTextAction', () => {
                 options: [],
                 segments: [
                     {
-                        idx: 0,
+                        index: 0,
                         type: SegmentType.Text,
                         styles: [],
                         content: 'abd'.split('')
                     },
                     {
-                        idx: 1,
+                        index: 1,
                         type: SegmentType.Text,
                         styles: [],
                         content: 'hello'.split('')
                     }
                 ],
                 cursor: {
-                    startSegmentIdx: 1,
+                    startSegmentIndex: 1,
                     startOffset: 5,
-                    endSegmentIdx: 1,
+                    endSegmentIndex: 1,
                     endOffset: 5
                 }
             },
@@ -92,22 +92,22 @@ describe('InsertTextAction', () => {
                 options: [],
                 segments: [
                     {
-                        idx: 0,
+                        index: 0,
                         type: SegmentType.Text,
                         styles: [],
                         content: 'abd'.split('')
                     },
                     {
-                        idx: 1,
+                        index: 1,
                         type: SegmentType.Text,
                         styles: [],
                         content: 'helloworld'.split('')
                     }
                 ],
                 cursor: {
-                    startSegmentIdx: 1,
+                    startSegmentIndex: 1,
                     startOffset: 10,
-                    endSegmentIdx: 1,
+                    endSegmentIndex: 1,
                     endOffset: 10
                 }
             }
@@ -118,9 +118,9 @@ describe('InsertTextAction', () => {
                 options: [],
                 segments: [],
                 cursor: {
-                    startSegmentIdx: -1,
+                    startSegmentIndex: -1,
                     startOffset: -1,
-                    endSegmentIdx: -1,
+                    endSegmentIndex: -1,
                     endOffset: -1
                 }
             },
@@ -129,16 +129,16 @@ describe('InsertTextAction', () => {
                 options: [],
                 segments: [
                     {
-                        idx: 0,
+                        index: 0,
                         type: SegmentType.Text,
                         styles: [],
                         content: 'world'.split('')
                     }
                 ],
                 cursor: {
-                    startSegmentIdx: 0,
+                    startSegmentIndex: 0,
                     startOffset: 5,
-                    endSegmentIdx: 0,
+                    endSegmentIndex: 0,
                     endOffset: 5
                 }
             }
