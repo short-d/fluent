@@ -1,3 +1,4 @@
+import styles from './Editor.module.scss';
 import React, {Component, createRef, KeyboardEvent} from 'react';
 
 import {ARROW_LEFT, ARROW_RIGHT, BACKSPACE, META, ARROW_UP, ARROW_DOWN} from '../key';
@@ -27,7 +28,7 @@ export default class Editor extends Component<any, IEditorState> {
 
     render() {
         return (
-            <div className={'Editor'}>
+            <div className={styles.Editor}>
                 <div ref={this.editableRegion}
                      className={'editable-region'}
                      contentEditable
