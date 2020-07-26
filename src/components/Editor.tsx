@@ -48,8 +48,8 @@ export default class Editor extends Component<any, IEditorState> {
         switch (segment.type) {
             case SegmentType.Text:
                 return (
-                    <span data-segment-id={segment.idx}
-                          key={segment.idx}
+                    <span data-segment-index={segment.index}
+                          key={segment.index}
                     >
                         {segment.content.join('')}
                     </span>
@@ -61,27 +61,27 @@ export default class Editor extends Component<any, IEditorState> {
         switch (event.key) {
             case BACKSPACE:
                 event.preventDefault();
-                //TODO: Please work on BACKSPACE event
+                //TODO: Handle BACKSPACE event
                 return;
             case ARROW_LEFT:
                 event.preventDefault();
-                //TODO: Please work on ARROW_LEFT event
+                //TODO: Handle ARROW_LEFT event
                 return;
             case ARROW_RIGHT:
                 event.preventDefault();
-                //TODO: Please work on ARROW_RIGHT event
+                //TODO: Handle ARROW_RIGHT event
                 return;
             case ARROW_UP:
                 event.preventDefault();
-                //TODO: Please work on ARROW_UP event
+                //TODO: Handle ARROW_UP event
                 return;
             case ARROW_DOWN:
                 event.preventDefault();
-                //TODO: Please work on ARROW_DOWN event
+                //TODO: Handle ARROW_DOWN event
                 return;
             case META:
                 event.preventDefault();
-                //TODO: Please work on META event
+                //TODO: Handle META event
                 return;
             default:
                 event.preventDefault();

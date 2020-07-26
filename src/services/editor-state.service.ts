@@ -22,15 +22,15 @@ export class IEditorStateService {
         this.state = {
             options: [],
             segments: [{
-                idx: 0,
+                index: 0,
                 type: SegmentType.Text,
                 styles: [],
                 content: sampleText
             }],
             cursor: {
-                startSegmentIdx: 0,
+                startSegmentIndex: 0,
                 startOffset: 0,
-                endSegmentIdx: 0,
+                endSegmentIndex: 0,
                 endOffset: 0
             }
         };

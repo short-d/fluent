@@ -20,16 +20,16 @@ export class InsertTextAction implements Action {
         if (newSegments.length < 1) {
             newSegments = [
                 {
-                    idx: 0,
+                    index: 0,
                     type: SegmentType.Text,
                     styles: [],
                     content: []
                 }
             ];
             newCursor = {
-                startSegmentIdx: 0,
+                startSegmentIndex: 0,
                 startOffset: 0,
-                endSegmentIdx: 0,
+                endSegmentIndex: 0,
                 endOffset: 0
             };
             newState = Object.assign<any, IEditorState, Partial<IEditorState>>(
@@ -63,7 +63,7 @@ export class InsertTextAction implements Action {
             endOffset: newCursor.startOffset + this.chars.length
         });
         newSegments = newSegments.map((currSegment: ISegment) => {
-            if (currSegment.idx === segment.idx) {
+            if (currSegment.index === segment.index) {
                 return newSegment;
             }
             return currSegment;
