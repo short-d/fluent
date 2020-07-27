@@ -12,6 +12,9 @@ export function getCurrSegment(state: IEditorState): ISegment {
     return findSegment(state.cursor.startSegmentIndex, state.segments);
 }
 
-export function findSegment(segmentIndex: number, segments: ISegment[]): ISegment {
+export function findSegment(
+    segmentIndex: number,
+    segments: ISegment[]
+): ISegment {
     return segments[segmentIndex];
 }

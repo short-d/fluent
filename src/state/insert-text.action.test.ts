@@ -142,6 +142,56 @@ describe('InsertTextAction', () => {
                     endOffset: 5
                 }
             }
+        },
+        {
+            name: 'should add 1 space at cursor position',
+            currState: {
+                options: [],
+                segments: [
+                    {
+                        index: 0,
+                        type: SegmentType.Text,
+                        styles: [],
+                        content: 'abd'.split('')
+                    },
+                    {
+                        index: 1,
+                        type: SegmentType.Text,
+                        styles: [],
+                        content: 'hello'.split('')
+                    }
+                ],
+                cursor: {
+                    startSegmentIndex: 0,
+                    startOffset: 2,
+                    endSegmentIndex: 0,
+                    endOffset: 2
+                }
+            },
+            text: ' ',
+            expectedNewState: {
+                options: [],
+                segments: [
+                    {
+                        index: 0,
+                        type: SegmentType.Text,
+                        styles: [],
+                        content: 'ab d'.split('')
+                    },
+                    {
+                        index: 1,
+                        type: SegmentType.Text,
+                        styles: [],
+                        content: 'hello'.split('')
+                    }
+                ],
+                cursor: {
+                    startSegmentIndex: 0,
+                    startOffset: 3,
+                    endSegmentIndex: 0,
+                    endOffset: 3
+                }
+            }
         }
     ];
 

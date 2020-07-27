@@ -1,7 +1,7 @@
-import {SegmentType} from '../entities/segment';
-import {Action} from '../state/action';
-import {IEditorState} from '../state/editor.state';
-
+import { SegmentType } from '../entities/segment';
+import { Action } from '../state/action';
+import { IEditorState } from '../state/editor.state';
+/*
 const sampleText = `
 This study was a preliminary study of high school student value changes because of the terrorist attack on the U.S. 
 The major limitations of this study were that the student population was from California and might not truly represent all high school students in the U.S. 
@@ -11,8 +11,9 @@ These issues not only made the samples similar, but also different in their comp
 The researchers will conduct periodic studies to explore whether these value changes are permanent and continue into adulthood. 
 We do not know what if any changes will take place in their values as they grow older, and we will continue to explore their values in our longitudinal studies of the impact of the 9/11 terrorist attacks.
 `.split('');
+*/
 
-export type Subscriber = () => void
+export type Subscriber = () => void;
 
 export class IEditorStateService {
     private subscribers: Subscriber[] = [];
@@ -21,12 +22,14 @@ export class IEditorStateService {
     constructor() {
         this.state = {
             options: [],
-            segments: [{
-                index: 0,
-                type: SegmentType.Text,
-                styles: [],
-                content: sampleText
-            }],
+            segments: [
+                {
+                    index: 0,
+                    type: SegmentType.Text,
+                    styles: [],
+                    content: ''.split('')
+                }
+            ],
             cursor: {
                 startSegmentIndex: 0,
                 startOffset: 0,
@@ -41,9 +44,9 @@ export class IEditorStateService {
     }
 
     public unSubscribe(subscriber: Subscriber) {
-        this.subscribers = this
-            .subscribers
-            .filter(currSubscriber => currSubscriber !== subscriber);
+        this.subscribers = this.subscribers.filter(
+            (currSubscriber) => currSubscriber !== subscriber
+        );
     }
 
     public getState(): IEditorState {
@@ -56,6 +59,6 @@ export class IEditorStateService {
     }
 
     private notifyStateChange() {
-        this.subscribers.forEach(subscriber => subscriber());
+        this.subscribers.forEach((subscriber) => subscriber());
     }
 }
