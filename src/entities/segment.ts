@@ -5,7 +5,7 @@ export enum SegmentType {
 }
 
 export interface ISegment {
-    idx: number;
+    index: number;
     type: SegmentType;
     styles: Style[];
     content: any;
