@@ -335,14 +335,8 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
-fluent@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/fluent/-/fluent-0.13.0.tgz#d1bd14b688d29af079564341c28cb0c1e9ccc2d0"
-  integrity sha512-veZ4VyzNiBnRAfUagBpXWVyOHPns7z00UtuYWoqWjlogFgHGzDo3b2v3+gNkxxyd44uPP6NBUkgLaHlC6sQm5g==
-
 "fluent@link:..":
-  version "0.0.0"
-  uid ""
+  version "1.0.0"
 
 forever-agent@~0.6.1:
   version "0.6.1"
@@ -603,9 +597,9 @@ locate-path@^3.0.0:
     path-exists "^3.0.0"
 
 lodash@^4.0.0, lodash@^4.17.15, lodash@~4.17.12:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 loud-rejection@^1.0.0:
   version "1.6.0"
@@ -894,15 +888,12 @@ qs@~6.5.2:
 
 "react-dom@link:../node_modules/react-dom":
   version "0.0.0"
-  uid ""
 
 "react-scripts@link:../node_modules/react-scripts":
   version "0.0.0"
-  uid ""
 
 "react@link:../node_modules/react":
   version "0.0.0"
-  uid ""
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
