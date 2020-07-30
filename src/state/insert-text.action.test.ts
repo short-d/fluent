@@ -144,7 +144,7 @@ describe('InsertTextAction', () => {
             }
         },
         {
-            name: 'should add 1 space at cursor position',
+            name: 'should add 4 space at cursor position',
             currState: {
                 options: [],
                 segments: [
@@ -168,7 +168,7 @@ describe('InsertTextAction', () => {
                     endOffset: 2
                 }
             },
-            text: ' ',
+            text: '    ',
             expectedNewState: {
                 options: [],
                 segments: [
@@ -176,7 +176,7 @@ describe('InsertTextAction', () => {
                         index: 0,
                         type: SegmentType.Text,
                         styles: [],
-                        content: 'ab d'.split('')
+                        content: 'ab    d'.split('')
                     },
                     {
                         index: 1,
@@ -187,9 +187,9 @@ describe('InsertTextAction', () => {
                 ],
                 cursor: {
                     startSegmentIndex: 0,
-                    startOffset: 3,
+                    startOffset: 6,
                     endSegmentIndex: 0,
-                    endOffset: 3
+                    endOffset: 6
                 }
             }
         }

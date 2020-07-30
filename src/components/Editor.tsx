@@ -64,8 +64,7 @@ export default class Editor extends Component<any, IEditorState> {
                         data-segment-index={segment.index}
                         key={segment.index}
                         dangerouslySetInnerHTML={{__html: this.joinContent(segment)}}
-                    >
-                    </span>
+                    />
                 );
         }
     };
@@ -84,7 +83,6 @@ export default class Editor extends Component<any, IEditorState> {
     }
 
     private handleOnKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-        console.log("+");
         switch (event.key) {
             case BACKSPACE:
                 event.preventDefault();
@@ -115,7 +113,6 @@ export default class Editor extends Component<any, IEditorState> {
                 if (event.key.length > 1) {
                     return;
                 }
-                console.log(event.key);
                 this.insertText(event.key);
         }
     };
