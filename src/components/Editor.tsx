@@ -1,12 +1,21 @@
 import styles from './Editor.module.scss';
-import React, {Component, createRef, KeyboardEvent} from 'react';
+import React, { Component, createRef, KeyboardEvent } from 'react';
 
-import {ARROW_LEFT, ARROW_RIGHT, BACKSPACE, META, ARROW_UP, ARROW_DOWN} from '../key';
-import {ISegment, SegmentType} from '../entities/segment';
-import {IEditorStateService, Subscriber} from '../services/editor-state.service';
-import {InsertTextAction} from '../state/insert-text.action';
-import {IEditorState} from '../state/editor.state';
-
+import {
+    ARROW_LEFT,
+    ARROW_RIGHT,
+    BACKSPACE,
+    META,
+    ARROW_UP,
+    ARROW_DOWN
+} from '../key';
+import { ISegment, SegmentType } from '../entities/segment';
+import {
+    IEditorStateService,
+    Subscriber
+} from '../services/editor-state.service';
+import { InsertTextAction } from '../state/insert-text.action';
+import { IEditorState } from '../state/editor.state';
 
 export default class Editor extends Component<any, IEditorState> {
     private editorStateService: IEditorStateService;
@@ -18,7 +27,8 @@ export default class Editor extends Component<any, IEditorState> {
         this.editorStateService = props.stateService;
         this.state = this.editorStateService.getState();
 
-        this.stateChangeSubscriber = () => this.setState(this.editorStateService.getState());
+        this.stateChangeSubscriber = () =>
+            this.setState(this.editorStateService.getState());
         this.editorStateService.onStateChange(this.stateChangeSubscriber);
     }
 
@@ -29,11 +39,12 @@ export default class Editor extends Component<any, IEditorState> {
     render() {
         return (
             <div className={styles.Editor}>
-                <div ref={this.editableRegion}
-                     className={'editable-region'}
-                     contentEditable
-                     suppressContentEditableWarning={true}
-                     onKeyDown={this.handleOnKeyDown}
+                <div
+                    ref={this.editableRegion}
+                    className={'editable-region'}
+                    contentEditable
+                    suppressContentEditableWarning={true}
+                    onKeyDown={this.handleOnKeyDown}
                 >
                     {this.renderSegments()}
                 </div>
@@ -49,14 +60,27 @@ export default class Editor extends Component<any, IEditorState> {
         switch (segment.type) {
             case SegmentType.Text:
                 return (
-                    <span data-segment-index={segment.index}
-                          key={segment.index}
-                    >
-                        {segment.content.join('')}
-                    </span>
+                    <span
+                        data-segment-index={segment.index}
+                        key={segment.index}
+                        dangerouslySetInnerHTML={{__html: this.joinContent(segment)}}
+                    />
                 );
         }
     };
+
+    private joinContent(segment: ISegment) {
+        return segment.content.map((char: string)=> 
+        {
+            switch(char){
+                case ' ': {
+                    return '&nbsp;';
+                }
+                default: {
+                    return char;
+                }                        
+        }}).join('');
+    }
 
     private handleOnKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
         switch (event.key) {
