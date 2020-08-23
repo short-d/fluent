@@ -16,15 +16,19 @@ import {
 } from '../services/editor-state.service';
 import { InsertTextAction } from '../state/insert-text.action';
 import { IEditorState } from '../state/editor.state';
+import { SelectionService } from '../services/selection.service';
 
 export default class Editor extends Component<any, IEditorState> {
     private editorStateService: IEditorStateService;
+    private selectionService: SelectionService;
     private readonly stateChangeSubscriber: Subscriber;
     private editableRegion = createRef<HTMLDivElement>();
 
     constructor(props: any) {
         super(props);
         this.editorStateService = props.stateService;
+        this.selectionService = props.selectionService;
+
         this.state = this.editorStateService.getState();
 
         this.stateChangeSubscriber = () =>
@@ -63,23 +67,43 @@ export default class Editor extends Component<any, IEditorState> {
                     <span
                         data-segment-index={segment.index}
                         key={segment.index}
-                        dangerouslySetInnerHTML={{__html: this.joinContent(segment)}}
+                        dangerouslySetInnerHTML={{
+                            __html: this.joinContent(segment)
+                        }}
                     />
                 );
         }
     };
 
+    private showCursor() {
+        if (!this.editableRegion || !this.editableRegion.current) {
+            return;
+        }
+        const el = this.editableRegion.current;
+        if (!el) {
+            return;
+        }
+
+        this.selectionService.setCursor(el, this.state.cursor);
+    }
+
+    componentDidUpdate() {
+        this.showCursor();
+    }
+
     private joinContent(segment: ISegment) {
-        return segment.content.map((char: string)=> 
-        {
-            switch(char){
-                case ' ': {
-                    return '&nbsp;';
+        return segment.content
+            .map((char: string) => {
+                switch (char) {
+                    case ' ': {
+                        return '&nbsp;';
+                    }
+                    default: {
+                        return char;
+                    }
                 }
-                default: {
-                    return char;
-                }                        
-        }}).join('');
+            })
+            .join('');
     }
 
     private handleOnKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
