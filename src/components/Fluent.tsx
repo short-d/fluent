@@ -8,7 +8,7 @@ import { SelectionService } from '../services/selection.service';
 export class Fluent extends Component<any, any> {
     private editorStateService = new IEditorStateService();
     private selectionService = new SelectionService();
-    
+
     public render() {
         return (
             <div className={styles.Fluent}>
