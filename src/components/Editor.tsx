@@ -18,6 +18,9 @@ import { InsertTextAction } from '../state/insert-text.action';
 import { IEditorState } from '../state/editor.state';
 import { SelectionService } from '../services/selection.service';
 
+const SPACE = '';
+const HTML_SPACE = '&nbsp;';
+
 export default class Editor extends Component<any, IEditorState> {
     private editorStateService: IEditorStateService;
     private selectionService: SelectionService;
@@ -95,8 +98,8 @@ export default class Editor extends Component<any, IEditorState> {
         return segment.content
             .map((char: string) => {
                 switch (char) {
-                    case ' ': {
-                        return '&nbsp;';
+                    case SPACE: {
+                        return HTML_SPACE;
                     }
                     default: {
                         return char;
